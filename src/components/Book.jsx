@@ -8,7 +8,7 @@ export default function Book({ book }) {
             <Card className="bg-light mb-4">
                 <Card.Img
                     variant="top"
-                    src="https://grimoakpress.com/cdn/shop/files/cover-notw-fc.jpg?v=1706902909"
+                    src={book.coverURL}
                     alt={book.title}
                     className="img-fluid p-3 book-img"
                 />
@@ -16,6 +16,9 @@ export default function Book({ book }) {
                     <Card.Title>{book.title}</Card.Title>
                     <Card.Text>
                         <strong>Autor:</strong> {book.author}
+                    </Card.Text>
+                    <Card.Text>
+                        <strong>Precio:</strong> {book.price}
                     </Card.Text>
                     <BuyButton book={book} />
                 </Card.Body>

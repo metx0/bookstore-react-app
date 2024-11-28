@@ -24,6 +24,7 @@ export default function BuyButton({ book }) {
                    <p><strong>Autor: </strong>{book.author}</p>
                    <p><strong>Páginas: </strong>{book.pages}</p>
                    <p><strong>Géneros: </strong>{book.genres.join(", ")}</p>
+                   <p><strong>Calificación: </strong>{book.rating}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
