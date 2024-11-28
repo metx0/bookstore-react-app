@@ -12,10 +12,26 @@ export default function MyNav() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Item>
-                            <Nav.Link as={Link} to="/">Tienda</Nav.Link>
+                            <Nav.Link as={Link} to="/">
+                                Tienda
+                            </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to="/about">Acerca de</Nav.Link>
+                            <Nav.Link as={Link} to="/about">
+                                Acerca de
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    <Nav className="ms-auto">
+                        <Nav.Item>
+                            <Nav.Link as={Link} to="/login">
+                                Login
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link as={Link} to="/register">
+                                Regístrate
+                            </Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
