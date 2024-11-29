@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import BuyButton from "./BuyButton";
 
-export default function Book({ book }) {
+export default function Book({ book, fetchBooks }) {
     return (
         <Col sm={12} md={6} lg={3}>
             <Card className="bg-light mb-4">
@@ -20,7 +20,7 @@ export default function Book({ book }) {
                     <Card.Text>
                         <strong>Precio:</strong> {book.price}
                     </Card.Text>
-                    <BuyButton book={book} />
+                    <BuyButton fetchBooks={fetchBooks} book={book} />
                 </Card.Body>
             </Card>
         </Col>
