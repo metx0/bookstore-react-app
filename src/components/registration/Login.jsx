@@ -33,17 +33,24 @@ export default function Login() {
                 body: JSON.stringify(loginData),
             });
 
+            // The user is not found (the account doesn't exist yet)
+            if (response.status === 404) {
+                alert("Parece que aún no tienes una cuenta. Regístrate")
+                navigate("/register")
+            // Password is wrong
+            } else if (response.status === 401) {
+                alert("Tu contraseña es incorrecta. Revísala")
+                return
+            }
+
+            console.log(response.status)
+
             // It was successful
             if (response.ok) {
                 // Log in the user
                 login();
-
                 // Go to the shop
                 navigate("/");
-
-                console.log(response.status);
-                // const data = await response.json();
-                // console.log("Login successful:", data);
             } else {
                 // Show a modal or something
                 console.error("Error in the login:", response.statusText);

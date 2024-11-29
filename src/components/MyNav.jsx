@@ -1,7 +1,10 @@
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import NavPrivateRoute from "./NavPrivateRoute";
+import LogoutButton from "./registration/LogoutButton";
 
 export default function MyNav() {
     return (
@@ -33,6 +36,16 @@ export default function MyNav() {
                                 Regístrate
                             </Nav.Link>
                         </Nav.Item>
+                        {/* Renderices the element if the user is authenticated */}
+                        <NavPrivateRoute
+                            element={
+                                <Nav.Item>
+                                    <Nav.Link>
+                                        <LogoutButton></LogoutButton>
+                                    </Nav.Link>
+                                </Nav.Item>
+                            }
+                        />
                     </Nav>
                 </Navbar.Collapse>
             </Container>
