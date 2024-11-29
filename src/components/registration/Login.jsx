@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 /* 
 A form to allow a user to login
 */
 export default function Login() {
     const loginEndpoint = "http://localhost:3000/";
+    const login = useContext(AuthContext).login;
+    const navigate = useNavigate();
 
     // States for the username and password
     const [username, setUsername] = useState("");
@@ -30,11 +33,17 @@ export default function Login() {
                 body: JSON.stringify(loginData),
             });
 
-            // If it was successful
+            // It was successful
             if (response.ok) {
+                // Log in the user
+                login();
+
                 // Go to the shop
-                const data = await response.json();
-                console.log("Login successful:", data);
+                navigate("/");
+
+                console.log(response.status);
+                // const data = await response.json();
+                // console.log("Login successful:", data);
             } else {
                 // Show a modal or something
                 console.error("Error in the login:", response.statusText);

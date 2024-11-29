@@ -4,6 +4,7 @@ import Nav from "./components/MyNav";
 import About from "./components/About";
 import BookList from "./components/BookList";
 import Footer from "./components/Footer";
+import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/registration/Login";
 import Register from "./components/registration/Register";
 
@@ -14,8 +15,19 @@ function App() {
         <Router>
             <Nav />
             <Routes>
-                <Route path="/" element={<BookList />} />
-                <Route path="/about" element={<About />} />
+                {/* <Route path="/" element={<Login />} /> */}
+
+                {/* Protected routes */}
+                <Route
+                    path="/"
+                    element={<PrivateRoute element={<BookList />} />}
+                />
+                <Route
+                    path="/about"
+                    element={<PrivateRoute element={<About />} />}
+                />
+
+                {/* Public routes */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
             </Routes>

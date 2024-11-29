@@ -29,8 +29,11 @@ export default function Register() {
             // If it was successful
             if (response.ok) {
                 // Go to the shop
-                const data = await response.json();
-                console.log("Login successful:", data);
+
+                console.log(response.status)
+
+                // const data = await response.json();
+                // console.log("Login successful:", data);
             } else {
                 // Show a modal or something
                 console.error("Error in the login:", response.statusText);
