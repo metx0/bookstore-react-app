@@ -13,24 +13,24 @@ export default function BookList() {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/view-books");
+    const fetchBooks = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/view-books");
 
-                if (!response.ok) {
-                    throw new Error("Error while fetching the data");
-                }
-
-                const data = await response.json();
-                setBooks(data);
-                setLoading(false);
-            } catch (err) {
-                console.log(err);
-                setLoading(false);
+            if (!response.ok) {
+                throw new Error("Error while fetching the data");
             }
-        };
 
+            const data = await response.json();
+            setBooks(data);
+            setLoading(false);
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchBooks();
     }, []);
 
@@ -41,7 +41,7 @@ export default function BookList() {
         <Container className="py-5">
             <Row>
                 {books.map((book) => (
-                    <Book key={book._id} book={book}></Book>
+                    <Book key={book._id} book={book} fetchBooks={fetchBooks} ></Book>
                 ))}
             </Row>
         </Container>
