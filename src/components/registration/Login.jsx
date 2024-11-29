@@ -1,15 +1,56 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 /* 
 A form to allow a user to login
 */
 export default function Login() {
     const loginEndpoint = "http://localhost:3000/";
+    const login = useContext(AuthContext).login;
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    // States for the username and password
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // The object we will convert to JSON
+        const loginData = {
+            username,
+            password,
+        };
+
+        try {
+            const response = await fetch(loginEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData),
+            });
+
+            // It was successful
+            if (response.ok) {
+                // Log in the user
+                login();
+
+                // Go to the shop
+                navigate("/");
+
+                console.log(response.status);
+                // const data = await response.json();
+                // console.log("Login successful:", data);
+            } else {
+                // Show a modal or something
+                console.error("Error in the login:", response.statusText);
+            }
+        } catch (error) {
+            console.error("Error in thr request:", error);
+        }
     };
 
     return (
@@ -25,11 +66,14 @@ export default function Login() {
                     >
                         <h3 className="text-center mb-3">Inicia sesión</h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Nombre de usuario</Form.Label>
+                            <Form.Label className="fw-semibold">
+                                Nombre de usuario
+                            </Form.Label>
                             <Form.Control
                                 required
                                 type="text"
                                 placeholder="Ingresa tu username"
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </Form.Group>
 
@@ -37,11 +81,14 @@ export default function Login() {
                             className="mb-3"
                             controlId="formBasicPassword"
                         >
-                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Label className="fw-semibold">
+                                Contraseña
+                            </Form.Label>
                             <Form.Control
                                 required
                                 type="password"
                                 placeholder="Contraseña"
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </Form.Group>
 
