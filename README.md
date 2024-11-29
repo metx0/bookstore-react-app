@@ -1,8 +1,25 @@
-# React + Vite
+# Aplicación de React de una tienda de libros
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+La plantilla de este proyecto fue hecha con Vite.
 
-Currently, two official plugins are available:
+Esta aplicación se comunica con un backend hecho en Express, el cual proporciona la comunicación con la base de datos de MongoDB
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para correr este proyecto necesitas tener instalado NodeJS en tu sistema. 
+
+Para comprobar la instalación puedes correr:
+
+`
+node --version
+`
+
+Para instalar todas las dependencias del proyecto corre:
+
+`
+npm install
+`
+
+Para levantar un servidor de desarrollo en el cual probar la aplicación de React corre:
+
+`
+npm run dev
+`
