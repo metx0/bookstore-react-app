@@ -16,7 +16,7 @@ export default function BookList() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await fetch("http://localhost:3000/books");
+                const response = await fetch("http://localhost:3000/view-books");
 
                 if (!response.ok) {
                     throw new Error("Error while fetching the data");

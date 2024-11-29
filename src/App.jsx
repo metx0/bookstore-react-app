@@ -15,8 +15,6 @@ function App() {
         <Router>
             <Nav />
             <Routes>
-                {/* <Route path="/" element={<Login />} /> */}
-
                 {/* Protected routes */}
                 <Route
                     path="/"
